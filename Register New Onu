@@ -1,10 +1,26 @@
+#cari ont yang belum terdaftar/terkonfig
+```
 ZTE C300 # show gpon onu uncfg
 interface gpon-olt_1/9/1
 onu 1 type ZTE-F609 sn ZTEGC8681E82
 exit
-
+```
+===============================
+#cari nomor urut olt yang belum diisi
+```
+show gpon onu state gpon-olt_1/1/4
+OnuIndex               Admin State  OMCC State   O7 State     Phase State
+----------------------------------------------------------------------------
+gpon-onu_1/1/4:1       enable       disable      unknown      LOS          
+gpon-onu_1/1/4:8       enable       enable       operation    working      
+gpon-onu_1/1/4:10      enable       disable      unknown      DyingGasp    
+gpon-onu_1/1/4:27      enable       enable       operation    working      
+ONU Number: 2/4       
+```
 =================================
 
+#Masuk ke interface olt dan daftarkan
+```
 interface gpon-olt_1/1/4
 onu 24 type ZTE-F609 sn ZTEGC8681E82
 !
@@ -28,3 +44,4 @@ wan-ip 1 mode pppoe username PTI0144-Luluk-Gemiring password qwerty123456 vlan-p
 wan-ip 1 ping-response enable traceroute-response enable
 security-mng 1 state enable mode permit protocol web
 !
+```
